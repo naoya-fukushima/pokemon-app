@@ -49,7 +49,8 @@ function App() {
   //前へボタンクリック
   const handlePrevPage = async () => {
     if (!prevURL) {
-      alert();
+      alert("先頭ページを表示中です。");
+      return;
     }
     setLoading(true);
     let data = await getAllPokemon(prevURL);
