@@ -10,9 +10,10 @@ export const Card = ({ pokemon }) => {
       <h3 className="cardName">{pokemon.name}</h3>
       <div className="cardTypes">
         <div>タイプ</div>
-        {pokemon.types.map((type) => {
+        {pokemon.types.map((type, i) => {
+          const typeKey = `type-${pokemon.id}-${i}`;
           return (
-            <div>
+            <div key={typeKey}>
               <span className="typeName">{type.type.name}</span>
             </div>
           );
@@ -28,9 +29,10 @@ export const Card = ({ pokemon }) => {
         <div className="cardData">
           <p className="title">
             アビリティ:
-            {pokemon.abilities.map((ability) => {
+            {pokemon.abilities.map((ability, i) => {
+              const abilityKey = `ability-${pokemon.id}-${i}`;
               return (
-                <div>
+                <div key={abilityKey}>
                   <span className="abilityName">{ability.ability.name}</span>
                 </div>
               );

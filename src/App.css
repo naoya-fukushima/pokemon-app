@@ -10,3 +10,28 @@
   gap: 20px;
   margin-top: 20px;
 }
+
+.btn {
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn button {
+  padding: 13px 32px;
+  background-color: #79ccc0;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  border-radius: 28px;
+  cursor: pointer;
+  box-shadow: 2px 8px 21px 1px #777777;
+  transition: all 0.3s;
+}
+
+.btn button:hover {
+  transform: translateY(5px);
+  box-shadow: none;
+}
