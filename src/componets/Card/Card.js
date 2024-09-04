@@ -1,9 +1,13 @@
 import React from "react";
 import "./Card.css";
 
-export const Card = ({ pokemon }) => {
+export const Card = ({ pokemon, openModal }) => {
+  const clickCard = () => {
+    openModal();
+  };
+
   return (
-    <div className="card">
+    <div className="card" onClick={clickCard}>
       <div className="cardImg">
         <img src={pokemon.sprites.front_default} />
       </div>

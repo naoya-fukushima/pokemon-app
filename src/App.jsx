@@ -3,6 +3,7 @@ import "./App.css";
 import { getAllPokemon, getPokemon } from "./utils/pokemon";
 import { Card } from "./componets/Card/Card";
 import Navbar from "./componets/Navbar/Navbar";
+import Modal from "./componets/Modal/Modal";
 
 function App() {
   const initalURL = "https://pokeapi.co/api/v2/pokemon";
@@ -10,6 +11,15 @@ function App() {
   const [pokemonData, setPokemonData] = useState([]);
   const [nextURL, setNextURL] = useState("");
   const [prevURL, setPrevURL] = useState("");
+  // モーダル開閉のstate、初期値はfalse
+  const [isShowModal, setIsShowModal] = useState(false);
+  // モーダルを開くクリックイベント
+  const openClick = () => {
+    setIsShowModal(true);
+  }; // モーダルを閉じるクリックイベント
+  const closeClick = () => {
+    setIsShowModal(false);
+  };
 
   //初期表示処理
   useEffect(() => {
@@ -76,7 +86,8 @@ function App() {
           <>
             <div className="pokemonCardContainer">
               {pokemonData.map((pokemon, i) => {
-                return <Card key={i} pokemon={pokemon} />;
+                console.log(pokemon);
+                return <Card key={i} pokemon={pokemon} openModal={openClick} />;
               })}
             </div>
             <div className="btn">
@@ -86,6 +97,7 @@ function App() {
           </>
         )}
       </div>
+      <Modal isShowModal={isShowModal} closeModal={closeClick} />
     </>
   );
 }
