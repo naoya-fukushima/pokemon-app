@@ -35,10 +35,9 @@ function App() {
     fetchPokemonData();
   }, []);
 
-  const loadPokemon = async (data) => {
+  const loadPokemon = async (pokemons) => {
     let _pokemonData = await Promise.all(
-      data.map((pokemon) => {
-        console.log(pokemon);
+      pokemons.map((pokemon) => {
         let pokemonRecord = getPokemon(pokemon.url);
         return pokemonRecord;
       })
@@ -86,7 +85,6 @@ function App() {
           <>
             <div className="pokemonCardContainer">
               {pokemonData.map((pokemon, i) => {
-                console.log(pokemon);
                 return <Card key={i} pokemon={pokemon} openModal={openClick} />;
               })}
             </div>
