@@ -32,13 +32,31 @@ export const getPokemonJaType = async (typeUrls) => {
   //ポケモンのタイプの情報を取得
   const _pokemonType = await Promise.all(
     typeUrls.map(async (typeUrl) => {
-      const pokemonTypeDetail = await getPokemon(typeUrl);
-      const jaName = pokemonTypeDetail.names.find(
-        (name) => name.language.name === "ja"
-      ).name;
-      return jaName;
+      const typesJa = getPokemonJaInfo(typeUrl);
+      return typesJa;
     })
   );
-  const joinedTypes = _pokemonType.join(" / ");
-  return joinedTypes;
+  const joinedType = _pokemonType.join(" / ");
+  return joinedType;
+};
+
+//日本語とくせいを取得
+export const getPokemonJaAbility = async (typeUrls) => {
+  //ポケモンのタイプの情報を取得
+  const _pokemonAbility = await Promise.all(
+    typeUrls.map(async (typeUrl) => {
+      const abilitiesJa = getPokemonJaInfo(typeUrl);
+      return abilitiesJa;
+    })
+  );
+  const joinedAbility = _pokemonAbility.join(" / ");
+  return joinedAbility;
+};
+
+const getPokemonJaInfo = async (url) => {
+  const pokemonTypeDetail = await getPokemon(url);
+  const jaName = pokemonTypeDetail.names.find(
+    (name) => name.language.name === "ja"
+  ).name;
+  return jaName;
 };
