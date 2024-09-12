@@ -11,3 +11,17 @@
   margin-bottom: 10px;
   margin-top: 0px;
 }
+
+.title {
+  margin: 10px 10px;
+}
+.ability {
+  margin-bottom: 10px;
+}
+
+.titleLabel {
+  font-weight: bold;
+}
+.titleValue {
+  word-break: keep-all;
+}
