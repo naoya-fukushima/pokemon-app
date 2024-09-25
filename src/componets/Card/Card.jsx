@@ -72,17 +72,12 @@ export const Card = ({ pokemon, openModal }) => {
           </div>
         </div>
         <div className="cardData">
-          <p className="title">
-            とくせい:
-            {pokemon.abilities.map((ability, i) => {
-              const abilityKey = `ability-${pokemon.id}-${i}`;
-              return (
-                <div key={abilityKey}>
-                  <span className="abilityName">{ability.ability.name}</span>
-                </div>
-              );
-            })}
-          </p>
+          <div className="title">
+            <span className="titleLabel">特性:</span>
+          </div>
+          <div className="ability">
+            <span className="titleValue">{dispAbility}</span>
+          </div>
         </div>
       </div>
     </div>
