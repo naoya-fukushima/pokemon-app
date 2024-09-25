@@ -46,7 +46,7 @@ export const Card = ({ pokemon, openModal }) => {
         </div>
         <div className="cardData">
           <p className="title">
-            アビリティ:
+            とくせい:
             {pokemon.abilities.map((ability, i) => {
               const abilityKey = `ability-${pokemon.id}-${i}`;
               return (

@@ -7,7 +7,7 @@ export default function Modal(props) {
   return (
     <>
       {props.isShowModal ? (
-        <div className="overlay">
+        <div className="overlay" onClick={closeDetail}>
           <div id="content">
             <p>これがモーダルウィンドウです。</p>
             <button onClick={closeDetail}>閉じる</button>
