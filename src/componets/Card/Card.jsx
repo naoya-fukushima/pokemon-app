@@ -1,11 +1,16 @@
 import React from "react";
 import "./Card.css";
 import { useEffect, useState } from "react";
-import { getPokemonJaName, getPokemonJaType } from "../../utils/pokemon";
+import {
+  getPokemonJaAbility,
+  getPokemonJaName,
+  getPokemonJaType,
+} from "../../utils/pokemon";
 
 export const Card = ({ pokemon, openModal }) => {
   const [dispName, setDispName] = useState("");
   const [dispType, setDispType] = useState("");
+  const [dispAbility, setDispdispAbility] = useState("");
 
   //表示情報を取得
   useEffect(() => {
@@ -15,12 +20,21 @@ export const Card = ({ pokemon, openModal }) => {
       setDispName(pokemonNameJa);
       //タイプ
       //複数タイプを考慮して配列でURLを取得
-      let typesUrls = pokemon.types.map((x) => {
+      const typesUrls = pokemon.types.map((x) => {
         const url = x.type.url;
         return url;
       });
       const types = await getPokemonJaType(typesUrls);
       setDispType(types);
+
+      //とくせい
+      //複数タイプを考慮して配列でURLを取得
+      const abilitiesUrls = pokemon.abilities.map((x) => {
+        const url = x.ability.url;
+        return url;
+      });
+      const ability = await getPokemonJaAbility(abilitiesUrls);
+      setDispdispAbility(ability);
     })();
   }, [pokemon]);
 
@@ -36,13 +50,26 @@ export const Card = ({ pokemon, openModal }) => {
       <h3 className="cardName">{dispName}</h3>
       <div className="cardInfo">
         <div className="cardData">
-          <p className="title">タイプ:{dispType}</p>
+          <div className="title">
+            <span className="titleLabel">タイプ:</span>
+            <span className="titleValue">{dispType}</span>
+          </div>
         </div>
         <div className="cardData">
-          <p className="title">重さ:{(pokemon.weight / 10).toFixed(1)}kg</p>
+          <div className="title">
+            <span className="titleLabel">重さ:</span>
+            <span className="titleValue">
+              {(pokemon.weight / 10).toFixed(1)}kg
+            </span>
+          </div>
         </div>
         <div className="cardData">
-          <p className="title">高さ:{(pokemon.height / 10).toFixed(1)}m</p>
+          <div className="title">
+            <span className="titleLabel">高さ:</span>
+            <span className="titleValue">
+              {(pokemon.height / 10).toFixed(1)}m
+            </span>
+          </div>
         </div>
         <div className="cardData">
           <p className="title">
