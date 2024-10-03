@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { getAllPokemon, getPokemon } from "./utils/pokemon";
 import { Card } from "./componets/Card/Card";
-import Navbar from "./componets/Navbar/Navbar";
+import Navbar from "./componets/Header/Header";
 import Modal from "./componets/Modal/Modal";
 
 function App() {
